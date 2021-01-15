@@ -24,6 +24,14 @@ jobs:
 #          ref: ${{ github.head_ref }}
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
+      - name: Install JSonnet
         run: |
-          docker run --name jsonnet bitnami/jsonnet:latest --help
+          apt-get update
+          apt-get install -y golang-go
+          go get github.com/google/go-jsonnet/cmd/jsonnet
+          export PATH:$PATH:~/go/bin
+          
+      - name: Build new repository
+        run: |
+          cd new/
+          scripts/gen-tests.sh gen/
