@@ -23,15 +23,15 @@ jobs:
           path: new
 #          ref: ${{ github.head_ref }}
 
-      # Runs a single command using the runners shell
+      - name: Setup Go environment
+        uses: actions/setup-go@v2.1.3
+        
       - name: Install JSonnet
         run: |
-          apt-get update
-          apt-get install -y golang-go
           go get github.com/google/go-jsonnet/cmd/jsonnet
-          export PATH:$PATH:~/go/bin
+          which jsonnet
           
       - name: Build new repository
+        working-directory: new/
         run: |
-          cd new/
           scripts/gen-tests.sh gen/
