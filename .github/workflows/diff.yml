@@ -26,6 +26,4 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          apt-get update
-          apt-get update -y jsonnet
-          new/scripts/gen-tests.sh 
+          docker run --name jsonnet bitnami/jsonnet:latest --help
