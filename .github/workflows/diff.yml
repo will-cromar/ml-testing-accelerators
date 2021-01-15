@@ -29,6 +29,7 @@ jobs:
       - name: Install JSonnet
         run: |
           go get github.com/google/go-jsonnet/cmd/jsonnet
+          export PATH=$PATH:~/go/bin
           which jsonnet
           
       - name: Build new repository
