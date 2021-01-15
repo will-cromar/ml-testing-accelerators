@@ -13,9 +13,9 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#      - uses: actions/checkout@v2
-#        with:
-#          path: old
+      - uses: actions/checkout@v2
+        with:
+          path: old
 #          ref: ${{ github.base_ref }}
 
       - uses: actions/checkout@v2
@@ -31,8 +31,20 @@ jobs:
           go get github.com/google/go-jsonnet/cmd/jsonnet
           export PATH=$PATH:~/go/bin
           which jsonnet
-          
+
+      - name: Build old repository
+        working-directory: old/
+        run: |
+          export PATH=$PATH:~/go/bin
+          scripts/gen-tests.sh gen/
+   
       - name: Build new repository
         working-directory: new/
         run: |
+          export PATH=$PATH:~/go/bin
           scripts/gen-tests.sh gen/
+          echo "Hi" > gen/hi.txt
+
+      - name: Diff old and new
+        run: |
+          git diff --no-index old/gen new/gen
