@@ -44,4 +44,4 @@ jobs:
 
       - name: Diff old and new
         run: |
-          git diff --no-index old/k8s new/k8s
+          diff --qrN old/k8s new/k8s || true
