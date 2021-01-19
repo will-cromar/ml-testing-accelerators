@@ -40,7 +40,7 @@ jobs:
         working-directory: new/
         run: |
           scripts/gen-tests.sh
-          echo "Hi" > gen/hi.txt
+          echo "Hi" > k8s/hi.txt
 
       - name: Diff old and new
         run: |
