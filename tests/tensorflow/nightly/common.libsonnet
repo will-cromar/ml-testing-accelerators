@@ -23,7 +23,7 @@ local mixins = import "templates/mixins.libsonnet";
     tpuSettings+: {
       softwareVersion: "nightly",
     },
-    imageTag: "nightly",
+    imageTag: "latest",
 
     metricCollectionConfig+: {
       metric_to_aggregation_strategies+: {
