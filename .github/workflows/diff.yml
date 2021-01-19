@@ -29,7 +29,7 @@ jobs:
       - name: Install JSonnet
         run: |
           go get github.com/google/go-jsonnet/cmd/jsonnet
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          echo "$HOME/go/bin" >> $GITHUB_PATH
 
       - name: Build old repository
         working-directory: old/
