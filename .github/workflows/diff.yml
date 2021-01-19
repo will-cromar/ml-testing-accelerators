@@ -45,4 +45,4 @@ jobs:
 
       - name: Diff old and new
         run: |
-          diff -rN old/k8s new/k8s || true
+          git diff --no-index old/k8s new/k8s || true
