@@ -29,22 +29,20 @@ jobs:
       - name: Install JSonnet
         run: |
           go get github.com/google/go-jsonnet/cmd/jsonnet
-          export PATH=$PATH:~/go/bin
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
           which jsonnet
 
       - name: Build old repository
         working-directory: old/
         run: |
-          export PATH=$PATH:~/go/bin
-          scripts/gen-tests.sh gen/
+          scripts/gen-tests.sh
    
       - name: Build new repository
         working-directory: new/
         run: |
-          export PATH=$PATH:~/go/bin
-          scripts/gen-tests.sh gen/
+          scripts/gen-tests.sh
           echo "Hi" > gen/hi.txt
 
       - name: Diff old and new
         run: |
-          git diff --no-index old/gen new/gen
+          git diff --no-index old/k8s new/k8s
