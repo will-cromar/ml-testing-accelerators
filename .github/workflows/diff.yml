@@ -45,4 +45,4 @@ jobs:
 
       - name: Diff old and new
         run: |
-          diff -qrN old/k8s new/k8s || true
+          diff -rN old/k8s new/k8s || true
