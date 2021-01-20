@@ -31,5 +31,5 @@ jobs:
       - name: Commit and push changes
         run: |
           git add k8s/
-          git commit -m "Generate files."
+          git commit --amend
           git push origin gen
