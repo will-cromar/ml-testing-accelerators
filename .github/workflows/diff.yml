@@ -32,6 +32,8 @@ jobs:
 
       - name: Show git diff
         run: |
+          git branch -a
+          git fetch
           git diff --color origin/gen -- k8s/ | tee generated.diff
           
       - name: Upload a Build Artifact
