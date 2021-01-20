@@ -33,3 +33,4 @@ jobs:
         with:
           branch: gen
           files: k8s/
+          force: true
