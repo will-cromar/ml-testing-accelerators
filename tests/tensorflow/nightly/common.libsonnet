@@ -19,11 +19,11 @@ local mixins = import "templates/mixins.libsonnet";
   ModelGardenTest:: common.ModelGardenTest {
     local config = self,
 
-    frameworkPrefix: "tf-nightly",
+    frameworkPrefix: "tf-latest",
     tpuSettings+: {
       softwareVersion: "nightly",
     },
-    imageTag: "nightly",
+    imageTag: "latest",
 
     metricCollectionConfig+: {
       metric_to_aggregation_strategies+: {
